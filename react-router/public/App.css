@@ -1,0 +1,735 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.nav-active {
+  color: grey;
+  font-weight: bold;
+}
+
+.App {
+  width: 100vw;
+  height: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: scroll;
+  
+}
+
+.Appup-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .Appup-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+button {
+  cursor: pointer;
+}
+
+.Appup-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Appup-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.login-with-google-btn {
+  transition: background-color 0.3s, box-shadow 0.3s;
+  padding: 12px 16px 12px 42px;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
+  color: #757575;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: 12px 11px;
+  left: 880px;
+  top: 535px;
+  position: absolute;
+  border-radius: 19px;
+  
+}
+.login-with-google-btn:hover {
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+.login-with-google-btn:active {
+  background-color: #eeeeee;
+}
+.login-with-google-btn:focus {
+  outline: none;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25),
+    0 0 0 3px #c8dafc;
+}
+.login-with-google-btn:disabled {
+  filter: grayscale(100%);
+  background-color: #ebebeb;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+}
+
+/* body {
+  text-align: center;
+  padding-top: 2rem;
+} */
+
+.App {
+  text-align: center;
+}
+
+.Appauth-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .Appauth-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+button {
+  cursor: pointer;
+}
+.Appauth-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Appauth-link {
+  color: #61dafb;
+}
+
+/* ------------------------ login ------------------------------ */
+
+ .mainlogin {
+  position: fixed;
+  width: 1280px;
+  height: 832px;
+  background: #FFFFFF;
+  font-family: '-apple-system';
+}
+
+.mainup {
+  /* position: fixed; */
+  width: 1280px;
+  height: 832px;
+  background: #FFFFFF;
+  font-family: '-apple-system';
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field1 {
+  position: relative;
+  width: 589px;
+  height: 57px;
+  left: 700px;
+  top: 283px;
+
+  /* background: #F5F5F5; */
+  border-radius: 19px;
+}
+
+.input-field2 {
+  position: relative;
+  width: 589px;
+  height: 57px;
+  left: 700px;
+  top: 323px;
+
+  /* top: 283px; */
+
+  /* background: #F5F5F5; */
+  border-radius: 19px;
+}
+
+.input-field1 input {
+  padding: 0.8rem;
+  width: 580px;
+  height: 30px;
+  background-color: #f5f5f5;
+  font-family: '-apple-system';
+  font-style: italic;
+  font-weight: 300;
+  font-size: 25px;
+}
+
+form .input-field1:first-child {
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+}
+
+.input-field2 input {
+  padding: 0.8rem;
+  width: 580px;
+  height: 30px;
+  background-color: #f5f5f5;
+  font-family: '-apple-system';
+  font-style: italic;
+  font-weight: 300;
+  font-size: 25px;
+}
+
+
+form .input-field:first-child {
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+}
+
+form input[type="submit"] {
+  /* background: gainsboro;
+  color: black;
+  font-family: sans-serif;
+  border-radius: 4px;
+  margin-top: 2rem;
+  padding: 0.4rem;
+  border-radius: 10px; */
+
+  position: absolute;
+  width: 292px;
+  height: 84px;
+  left: 748px;
+  top: 508px;
+  background: #D9D9D9;
+  border-radius: 19px;
+  font-size: 50px;
+  font-style: italic;
+  font-family: '-apple-system';
+}
+
+h2 {
+  position: absolute;
+  width: 152px;
+  height: 72px;
+  left: 732px;
+  top: 108px;
+
+  font-family: '-apple-system';
+  font-style: italic;
+  font-weight: 300;
+  font-size: 48px;
+  line-height: 72px;
+/* identical to box height */
+  color: rgba(0, 0, 0, 0.78);
+}
+
+line1 {
+  position: absolute;
+  width: 641px;
+  height: 0px;
+  left: 725px;
+  top: 220px;
+
+  border: 1px solid rgba(175, 175, 175, 0.8);
+}
+
+email {
+  position: absolute;
+  width: 63px;
+  height: 37px;
+  left: 700px;
+  top: 240px;
+
+  font-family: '-apple-system';
+  font-style: italic;
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 37px;
+  color: #000000;
+}
+
+coverlogin {
+  position: absolute;
+  width: 711.16px;
+  height: 1663.34px;
+  left: -60px;
+  top: -650px;
+
+  /* background: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fphotos%2F1g9LmbRiMt4&psig=AOvVaw0GES6ifp-tJKb9uSngRvBg&ust=1675321236094000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCNDH94rg8_wCFQAAAAAdAAAAABAE), #D9D9D9; */
+  background-image: url(https://images.unsplash.com/photo-1614983646436-b3d7a8398b3f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80);
+  box-shadow: 30px 4px 19px rgba(0, 0, 0, 0.25);
+  transform: rotate(13.06deg);
+}
+
+forgotpassword {
+  position: absolute;
+  width: 183px;
+  height: 36px;
+  left: 715px;
+  top: 441px;
+
+  font-family: '-apple-system';
+  font-style: italic;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 36px;
+  /* identical to box height */
+
+  color: #A7A7A7;
+}
+
+line2 {
+  position: absolute;
+  width: 736px;
+  height: 0px;
+  left: 630px;
+  top: 645px;
+
+  border: 1px solid rgba(175, 175, 175, 0.8);
+}
+
+password {
+  position: absolute;
+  width: 104px;
+  height: 37px;
+  left: 700px;
+  top: 340px;
+
+  font-family: '-apple-system';
+  font-style: italic;
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 37px;
+
+  color: #000000;
+}
+
+googlein {
+  position: absolute;
+  width: 104px;
+  height: 37px;
+  left: 1080px;
+  top: 535px;
+  /* box-shadow: 30px 4px 19px rgba(0, 0, 0, 0.25); */
+  border-radius: 8px;
+}
+
+googleinname {
+  position: relative;
+  width: 589px;
+  height: 57px;
+  left: 339px;
+  top: 390px;
+  font-family: '-apple-system';
+font-style: italic;
+font-weight: 300;
+font-size: 30px;
+}
+
+googleinemail {
+  position: relative;
+  width: 589px;
+  height: 57px;
+  left: 155px;
+  top: 295px;
+  font-family: '-apple-system';
+font-style: italic;
+font-weight: 300;
+font-size: 30px;
+}
+
+googleemailcover{
+  /* Rectangle 5 */
+
+position: absolute;
+width: 589px;
+height: 57px;
+left: 700px;
+top: 283px;
+
+background: #F5F5F5;
+border-radius: 19px;
+}
+
+
+googlenamecover{
+  /* Rectangle 5 */
+
+position: absolute;
+width: 589px;
+height: 57px;
+left: 700px;
+  top: 380px;
+
+background: #F5F5F5;
+border-radius: 19px;
+}
+
+.imgauth img {
+  width: 90px;
+  overflow: hidden;
+    border-radius: 50%;
+  position: absolute;
+  left: 1300px;
+  top: 10px;
+    
+  }
+
+img {
+  width: 300px;
+  margin: 10px;
+  border-radius: 19px;
+  filter: drop-shadow(10px 10px 19px rgba(0, 0, 0, 0.3));
+  
+}
+
+mainup {
+  left: 879px;
+  top: 480px;
+  flex-direction: row ;
+  
+}
+
+
+.button {
+  position: absolute;
+  width: 192px;
+  height: 44px;
+  left: 879px;
+  top: 480px;
+  background: #D9D9D9;
+  border-radius: 19px;
+  font-size: 20px;
+  font-style: italic;
+  text-align: center;
+  font-family: '-apple-system';
+  color: #000;
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 44px;
+}
+
+
+
+
+googleinname2 {
+  position: relative;
+  width: 589px;
+  height: 57px;
+  left: 739px;
+  top: 390px;
+  font-family: '-apple-system';
+font-style: italic;
+font-weight: 300;
+font-size: 30px;
+}
+
+googleinemail2 {
+  position: relative;
+  width: 589px;
+  height: 57px;
+  left: 555px;
+  top: 295px;
+  font-family: '-apple-system';
+font-style: italic;
+font-weight: 300;
+font-size: 30px;
+}
+
+
+/* ------------------------ main ------------------------------ */
+
+mainname {
+  /* ItzMine */
+position: absolute;
+width: 152px;
+height: 72px;
+left: 42px;
+top: 30px;
+
+font-family: 'Kanit';
+font-style: italic;
+font-weight: 300;
+font-size: 48px;
+line-height: 72px;
+/* identical to box height */
+
+color: #000000;
+}
+
+mainfav{
+  /* Favorites */
+position: absolute;
+width: 123px;
+height: 45px;
+left: 81px;
+top: 146px;
+
+font-family: 'Kanit';
+font-style: italic;
+font-weight: 300;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+color: rgba(118, 118, 118, 0.78);
+}
+
+mainarch {
+  /* Archive */
+position: absolute;
+width: 100px;
+height: 45px;
+left: 81px;
+top: 225px;
+
+font-family: 'Kanit';
+font-style: italic;
+font-weight: 300;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: rgba(118, 118, 118, 0.78);
+}
+
+mainline {
+  /* Line 1 */
+position: absolute;
+width: 771px;
+height: 0px;
+left: -160px;
+top: 420px;
+
+border: 1px solid rgba(116, 116, 116, 0.6);
+transform: rotate(90deg);
+}
+
+normpropic{
+  /* profile image */
+
+position: absolute;
+width: 69px;
+height: 69px;
+left: 1310px;
+top: 30px;
+
+background: url(https://image.shutterstock.com/mosaic_250/2780032/1194497251/stock-photo-portrait-of-smiling-red-haired-millennial-man-looking-at-camera-sitting-in-caf-or-coffeeshop-1194497251.jpg);
+border-radius: 50%;
+}
+
+form2 {
+  /* Frame 2 */
+
+position: absolute;
+width: 1031px;
+height: 745px;
+left: 224px;
+top: 87px;
+overflow-y: scroll;
+
+}
+
+pic1 {
+  /* Rectangle 1 */
+
+position: absolute;
+width: 236px;
+height: 227px;
+left: 19px;
+top: 41px;
+
+background: url(https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg);
+filter: drop-shadow(10px 10px 19px rgba(0, 0, 0, 0.3));
+border-radius: 19px;
+
+}
+
+pic2 {
+  /* Rectangle 1 */
+
+position: absolute;
+width: 236px;
+height: 227px;
+left: 0px;
+top: 521px;
+
+background: url(https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg);
+filter: drop-shadow(10px 10px 19px rgba(0, 0, 0, 0.3));
+border-radius: 19px;
+}
+
+maincover {
+  /* Rectangle 9 */
+
+position: absolute;
+width: 96.51px;
+height: 526.82px;
+left: -100.99px;
+top: -22px;
+
+background-image: url(https://images.unsplash.com/photo-1614983646436-b3d7a8398b3f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80);
+box-shadow: 30px 4px 19px rgba(0, 0, 0, 0.25);
+transform: rotate(13.06deg);
+}
+
+mainproframe{
+/* profile */
+
+position: absolute;
+width: 1012px;
+height: 143px;
+left: 266px;
+top: 40px;
+
+}
+
+mainpropic {
+  /* profile image */
+
+position: absolute;
+width: 138px;
+height: 138px;
+left: 26px;
+top: 5px;
+
+background: url(https://image.shutterstock.com/mosaic_250/2780032/1194497251/stock-photo-portrait-of-smiling-red-haired-millennial-man-looking-at-camera-sitting-in-caf-or-coffeeshop-1194497251.jpg);
+border-radius: 50%;
+}
+
+mainusername{
+  /* username */
+
+position: absolute;
+width: 156px;
+height: 65px;
+left: 205px;
+top: 0px;
+
+font-family: 'Kanit';
+font-style: italic;
+font-weight: 300;
+font-size: 40px;
+line-height: 60px;
+
+color: #000000;
+
+}
+
+mainfollower{
+  /* 7 posts 818 followers 639 following */
+
+position: absolute;
+width: 756px;
+height: 66px;
+left: 282px;
+top: 44px;
+
+font-family: 'Kanit';
+font-style: italic;
+font-weight: 300;
+font-size: 24px;
+line-height: 36px;
+
+color: rgba(118, 118, 118, 0.78);
+
+}
+
+dynamicpic{
+  /* Big image */
+position: absolute;
+width: 1012px;
+height: 315px;
+left: 0px;
+top: 165px;
+
+background: url(https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg);
+filter: drop-shadow(10px 10px 19px rgba(0, 0, 0, 0.3));
+border-radius: 19px;
+}
+
+/* ------------------------ fav ------------------------------ */
+
+favbanner {
+  /* Favorites */
+
+position: absolute;
+width: 123px;
+height: 45px;
+left: 673px;
+top: 42px;
+
+font-family: 'Kanit';
+font-style: italic;
+font-weight: 300;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: rgba(118, 118, 118, 0.78);
+}
+
