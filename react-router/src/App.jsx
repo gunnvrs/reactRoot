@@ -13,6 +13,7 @@ import Dashboard from './pages/Dashboard'
 import Profile from './pages/Profile'
 import Login from './pages/Login'
 import Appup from './pages/Appup'
+import NotFoundPage from './pages/Error'
 
 
 
@@ -67,6 +68,7 @@ function App() {
 
         <Route path="/" element={<Home/>}/>
         <Route path='/appup' element={<Appup/>}/>
+        <Route path='*' element={<Error/>}/>
       
     </Routes>
     </BrowserRouter>

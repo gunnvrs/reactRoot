@@ -10,8 +10,7 @@ function Home({ login }) {
     <div>
     <p>This is the Home Page</p>
     <button onClick={() =>{
-        login();
-        navigate('/dashboard')
+        navigate('/login')
     }}>
         login
     </button>
