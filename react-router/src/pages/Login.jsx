@@ -33,10 +33,8 @@ function Login() {
       {localStorage.getItem("email") && (
         <div>
 
-          
-          <googleemailcover>{localStorage.getItem("email")}</googleemailcover>
-          <googlenamecover>{localStorage.getItem("name")}</googlenamecover>
-
+          <googleinemail>{localStorage.getItem("email")}</googleinemail>
+          <googleinname>{localStorage.getItem("name")}</googleinname>
 
           <div className="imgauth">
             <img src={localStorage.getItem("profilePic")} />
@@ -44,7 +42,12 @@ function Login() {
           <button className="button">
             <Link to="/appup">login</Link>
           </button>
+
+          <googleemailcover></googleemailcover>
+          <googlenamecover></googlenamecover>
+          
         </div>
+        
       )}
       <coverlogin></coverlogin>
     </div>
