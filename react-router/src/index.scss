@@ -479,7 +479,7 @@ font-size: 30px;
 
 mainname {
   /* ItzMine */
-position: absolute;
+position: fixed;
 width: 152px;
 height: 72px;
 left: 42px;
@@ -497,7 +497,7 @@ color: #000000;
 
 mainfav{
   /* Favorites */
-position: absolute;
+position: fixed;
 width: 123px;
 height: 45px;
 left: 81px;
@@ -514,7 +514,7 @@ color: rgba(118, 118, 118, 0.78);
 
 mainarch {
   /* Archive */
-position: absolute;
+position: fixed;
 width: 100px;
 height: 45px;
 left: 81px;
@@ -532,7 +532,7 @@ color: rgba(118, 118, 118, 0.78);
 
 mainline {
   /* Line 1 */
-position: absolute;
+position: fixed;
 width: 771px;
 height: 0px;
 left: -160px;
@@ -599,7 +599,7 @@ border-radius: 19px;
 maincover {
   /* Rectangle 9 */
 
-position: absolute;
+position: fixed;
 width: 96.51px;
 height: 526.82px;
 left: -100.99px;
