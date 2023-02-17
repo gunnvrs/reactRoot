@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import { signInWithGoogle } from "../Firebase";
-
-
 import {
   ref,
   uploadBytes,
@@ -16,11 +15,13 @@ function Appup() {
   const [imageUpload, setImageUpload] = useState(null);
   const [imageUrls, setImageUrls] = useState([]);
 
-  const imagesListRef = ref(storage, "imagess/");
+  const { senddingemail } = useParams();
+
+  const imagesListRef = ref(storage, `${localStorage.getItem("name")}/`);
   const uploadFile = () => {
     if (imageUpload == null) return;
-  
-    const imageRef = ref(storage, `imagess/${imageUpload.name + v4()}`);
+
+    const imageRef = ref(storage, `${localStorage.getItem("name")}/${imageUpload.name + v4()}`);
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
         if (!imageUrls.includes(url)) {
@@ -31,17 +32,20 @@ function Appup() {
   };
 
   useEffect(() => {
-    listAll(imagesListRef).then((response) => {
-      const promises = response.items.map((item) =>
-        getDownloadURL(item).then((url) => url)
-      );
-  
-      Promise.all(promises).then((urls) => {
-        setImageUrls(urls);
+    listAll(imagesListRef)
+      .then((response) => {
+        const promises = response.items.map((item) =>
+          getDownloadURL(item).then((url) => url)
+        );
+
+        Promise.all(promises).then((urls) => {
+          setImageUrls(urls);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    });
   }, []);
-  
 
   return (
     <div className="mainup">
@@ -56,9 +60,13 @@ function Appup() {
         {imageUrls.map((url, index) => {
           return <img key={index} src={url} />;
         })}
-  
+
+        <h2>Email: {senddingemail}</h2>
+        <h2>Name: {localStorage.getItem("name")}</h2>
+        <img src={localStorage.getItem("profilePic")} />
+
         <title>Itzmine App</title>
-  
+
         <mainname>ItzMine</mainname>
         <mainfav>Favorite</mainfav>
         <mainarch>Archive</mainarch>
@@ -67,7 +75,6 @@ function Appup() {
       </div>
     </div>
   );
-  
 }
 
 export default Appup;
