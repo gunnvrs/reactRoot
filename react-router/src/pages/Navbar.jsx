@@ -1,31 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
+  const [selected, setSelected] = useState("Itzmine");
+
+  const handleClick = (event) => {
+    setSelected(event.target.innerText);
+  };
+
   return (
     <nav>
-      
-        <mainname>
-          {/* <Link to="/appup">ItzMine</Link> */}
-        <Link to="/appup" style={{ textDecoration: "none", color: "black"  }}>
-        Itzmine
+      <mainname>
+        <Link
+          to="/appup"
+          style={{
+            textDecoration: "none",
+            color: selected === "Itzmine" ? "black" : "grey",
+          }}
+          onClick={handleClick}
+        >
+          Itzmine
         </Link>
-        </mainname>
+      </mainname>
 
-        <mainfav>
-          {/* <Link to="/appup">Favorite</Link> */}
-          <Link to="/appup" style={{ textDecoration: "none", color: "black"  }}>
-        Favorite
+      <mainfav>
+        <Link
+          to="/appup"
+          style={{
+            textDecoration: "none",
+            color: selected === "Favorite" ? "black" : "grey",
+          }}
+          onClick={handleClick}
+        >
+          Favorite
         </Link>
-        </mainfav>
+      </mainfav>
 
-        <mainarch>
-          {/* <Link to="/sharing">Share</Link> */}
-          <Link to="/sharing" style={{ textDecoration: "none", color: "black"  }}>
-        Share
+      <mainarch>
+        <Link
+          to="/sharing"
+          style={{
+            textDecoration: "none",
+            color: selected === "Share" ? "black" : "grey",
+          }}
+          onClick={handleClick}
+        >
+          Share
         </Link>
-        </mainarch>
-      
+      </mainarch>
     </nav>
   );
 }
