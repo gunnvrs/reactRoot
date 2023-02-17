@@ -32,8 +32,12 @@ function Login() {
 
       {localStorage.getItem("email") && (
         <div>
+
+          
           <googleemailcover>{localStorage.getItem("email")}</googleemailcover>
           <googlenamecover>{localStorage.getItem("name")}</googlenamecover>
+
+
           <div className="imgauth">
             <img src={localStorage.getItem("profilePic")} />
           </div>
