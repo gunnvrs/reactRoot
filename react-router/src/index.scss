@@ -728,3 +728,25 @@ covererror {
   box-shadow: 30px 4px 19px rgba(0, 0, 0, 0.25);
   transform: rotate(13.06deg);
 }
+
+/* ------------------------ Share ------------------------------ */
+
+sharemainname{
+  /* Favorites */
+
+position: absolute;
+width: 123px;
+height: 45px;
+left: 673px;
+top: 42px;
+
+font-family: 'Kanit';
+font-style: italic;
+font-weight: 300;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: rgba(118, 118, 118, 0.78);
+
+}

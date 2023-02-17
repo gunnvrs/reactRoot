@@ -14,6 +14,7 @@ import Profile from './pages/Profile'
 import Login from './pages/Login'
 import Appup from './pages/Appup'
 import NotFoundPage from './pages/Error'
+import Share from './pages/sharing'
 
 
 
@@ -69,6 +70,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path='/appup' element={<Appup/>}/>
         <Route path='*' element={<Error/>}/>
+        <Route path='/sharing' element={<Share/>}/>
       
     </Routes>
     </BrowserRouter>
