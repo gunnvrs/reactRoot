@@ -12,17 +12,17 @@ import { storage } from "../Firebase";
 import { v4 } from "uuid";
 import Navbar from "./Navbar";
 
-function Appup() {
+function Favorite() {
   const [imageUpload, setImageUpload] = useState(null);
   const [imageUrls, setImageUrls] = useState([]);
 
   const { senddingemail } = useParams();
 
-  const imagesListRef = ref(storage, `${localStorage.getItem("name")}/`);
+  const imagesListRef = ref(storage, `${localStorage.getItem("name")+"fav"}/`);
   const uploadFile = () => {
     if (imageUpload == null) return;
 
-    const imageRef = ref(storage, `${localStorage.getItem("name")}/${imageUpload.name + v4()}`);
+    const imageRef = ref(storage, `${localStorage.getItem("name")+"fav"}/${imageUpload.name + v4()}`);
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
         if (!imageUrls.includes(url)) {
@@ -52,6 +52,7 @@ function Appup() {
     <div className="mainup">
       <Navbar />
       <div className="App">
+      <sharemainname>Favorite</sharemainname>
         <input
           type="file"
           onChange={(event) => {
@@ -67,7 +68,6 @@ function Appup() {
 
         <h2>Email: {senddingemail}</h2>
         <h2>Name: {localStorage.getItem("name")}</h2>
-        <h2>Uid: {localStorage.getItem("userId")} </h2>
 
         <div className="imgauth">
         <img src={localStorage.getItem("profilePic")} />
@@ -82,4 +82,4 @@ function Appup() {
   );
 }
 
-export default Appup;
+export default Favorite;

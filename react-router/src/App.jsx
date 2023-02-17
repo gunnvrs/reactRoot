@@ -15,6 +15,7 @@ import Login from './pages/Login'
 import Appup from './pages/Appup'
 import NotFoundPage from './pages/Error'
 import Share from './pages/sharing'
+import Favorite from './pages/favorite'
 
 
 
@@ -71,6 +72,7 @@ function App() {
         <Route path='/appup' element={<Appup/>}/>
         <Route path='*' element={<Error/>}/>
         <Route path='/sharing' element={<Share/>}/>
+        <Route path='/favorite' element={<Favorite/>}/>
       
     </Routes>
     </BrowserRouter>

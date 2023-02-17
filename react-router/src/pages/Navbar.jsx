@@ -25,7 +25,7 @@ function Navbar() {
 
       <mainfav>
         <Link
-          to="/appup"
+          to="/favorite"
           style={{
             textDecoration: "none",
             color: selected === "Favorite" ? "black" : "grey",

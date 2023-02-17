@@ -8,9 +8,11 @@ function Login() {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
+        const userId = result.uid;
         localStorage.setItem("email", user.email);
         localStorage.setItem("name", user.displayName);
         localStorage.setItem("profilePic", user.photoURL);
+        localStorage.setItem("userId", user.uid);
       })
       .catch((error) => {
         console.log(error);
