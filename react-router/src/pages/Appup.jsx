@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { signInWithGoogle } from "../Firebase";
 import {
@@ -10,6 +10,7 @@ import {
 } from "firebase/storage";
 import { storage } from "../Firebase";
 import { v4 } from "uuid";
+import Navbar from "./Navbar";
 
 function Appup() {
   const [imageUpload, setImageUpload] = useState(null);
@@ -49,6 +50,7 @@ function Appup() {
 
   return (
     <div className="mainup">
+      <Navbar />
       <div className="App">
         <input
           type="file"
@@ -72,9 +74,6 @@ function Appup() {
 
         <title>Itzmine App</title>
 
-        <mainname>ItzMine</mainname>
-        <mainfav>Favorite</mainfav>
-        <mainarch>Share</mainarch>
         <maincover></maincover>
         <mainline></mainline>
       </div>

@@ -10,6 +10,7 @@ import {
 } from "firebase/storage";
 import { storage } from "../Firebase";
 import { v4 } from "uuid";
+import Navbar from "./Navbar";
 
 function Share() {
   const [imageUpload, setImageUpload] = useState(null);
@@ -49,6 +50,7 @@ function Share() {
 
   return (
     <div className="mainup">
+      <Navbar />
       <div className="App">
         <sharemainname>Share</sharemainname>
         <input
@@ -73,9 +75,9 @@ function Share() {
 
         <title>Itzmine App</title>
 
-        <mainname>ItzMine</mainname>
+        {/* <mainname>ItzMine</mainname>
         <mainfav>Favorite</mainfav>
-        <mainarch>Share</mainarch>
+        <mainarch>Share</mainarch> */}
         <maincover></maincover>
         <mainline></mainline>
       </div>

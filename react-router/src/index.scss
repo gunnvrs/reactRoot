@@ -490,6 +490,8 @@ font-style: italic;
 font-weight: 300;
 font-size: 48px;
 line-height: 72px;
+// text-decoration: none ;
+
 /* identical to box height */
 
 color: #000000;
@@ -750,3 +752,27 @@ line-height: 45px;
 color: rgba(118, 118, 118, 0.78);
 
 }
+
+
+/* ------------------------ Nav ------------------------------ */
+// nav {
+//   display: flex;
+//   justify-content: space-around;
+//   align-items: center;
+//   background-color: #f2f2f2;
+//   font-size: 1.5rem;
+//   font-weight: bold;
+//   height: 80px;
+// }
+
+// nav a {
+//   text-decoration: none;
+//   color: #333333;
+//   padding: 0.5rem;
+//   border-bottom: 2px solid transparent;
+// }
+
+// nav a.selected {
+//   color: black;
+//   border-bottom-color: black;
+// }

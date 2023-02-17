@@ -40,7 +40,9 @@ function Login() {
             <img src={localStorage.getItem("profilePic")} />
           </div>
           <button className="button">
-            <Link to="/appup">login</Link>
+          <Link to="/appup" style={{ textDecoration: "none", color: "black"  }}>
+        login
+        </Link>
           </button>
 
           <googleemailcover></googleemailcover>
