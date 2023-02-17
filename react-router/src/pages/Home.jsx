@@ -7,14 +7,31 @@ function Home({ login }) {
     let navigate = useNavigate()
     
   return (
+    
     <div>
-    <p>This is the Home Page</p>
+    {/* <propichome> */}
+    <div className="imgauthhome">
+    <img src={localStorage.getItem("profilePic")} />
+    </div>
+    {/* </propichome> */}
+    
     <button onClick={() =>{
         navigate('/login')
     }}>
         login
     </button>
-    {/* {location.state} */}
+
+    <button onClick={() =>{
+        navigate('/appup')
+    }}>
+        continue with
+    </button>
+
+    
+
+    
+    
+    {/* <coverlogin></coverlogin> */}
     </div>
   )
 }

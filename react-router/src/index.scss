@@ -125,8 +125,31 @@ button {
 
 
 
+/* ------------------------ Home ------------------------------ */
 
+propichome{
+  /* ItzMine */
 
+position: absolute;
+width: 152px;
+height: 72px;
+left: 840px;
+top: 97px;
+
+font-family: 'Kanit';
+font-style: italic;
+font-weight: 300;
+font-size: 48px;
+line-height: 72px;
+/* identical to box height */
+
+color: rgba(0, 0, 0, 0.78);
+}
+
+buttonhome{
+  top: 400px;
+  left:140px;
+}
 
 
 
@@ -429,6 +452,19 @@ font-size: 30px;
   top: 10px;
     
   }
+
+
+  .imgauthhome img {
+    overflow: hidden;
+      border-radius: 50%;
+    position: absolute;
+    width: 152px;
+    height: auto;
+  left: 940px;
+  top: 177px;
+
+      
+    }
 
 img {
   width: 300px;
