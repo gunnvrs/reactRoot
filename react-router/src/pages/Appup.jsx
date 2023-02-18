@@ -13,19 +13,42 @@ import { v4 } from "uuid";
 import Navbar from "./Navbar";
 
 function ImageList({ imageUrls }) {
+  const [sortedImages, setSortedImages] = useState([]);
+
+  useEffect(() => {
+    // Calculate the number of rows needed to display the images
+    const numRows = Math.ceil(imageUrls.length / 3);
+    
+    // Create an array of empty arrays, one for each row
+    const rows = Array.from({ length: numRows }, () => []);
+
+    // Insert the images into the rows in left-to-right, top-to-bottom order
+    imageUrls.forEach((url, index) => {
+      const row = Math.floor(index / 3);
+      const col = index % 3;
+      rows[row][col] = url;
+    });
+
+    setSortedImages(rows);
+  }, [imageUrls]);
+
   const handleImageClick = (event) => {
     event.target.classList.toggle("image-selected");
   };
 
   return (
     <>
-      {imageUrls.map((url, index) => (
-        <img
-          key={index}
-          src={url}
-          className="image"
-          onClick={handleImageClick}
-        />
+      {sortedImages.map((row, rowIndex) => (
+        <div key={rowIndex} className="image-row">
+          {row.map((url, colIndex) => (
+            <img
+              key={colIndex}
+              src={url}
+              className="image"
+              onClick={handleImageClick}
+            />
+          ))}
+        </div>
       ))}
     </>
   );
