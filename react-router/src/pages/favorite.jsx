@@ -48,6 +48,10 @@ function Favorite() {
       });
   }, []);
 
+  const handleImageClick = (event) => {
+    event.target.classList.toggle("image-selected");
+  };
+
   return (
     <div className="mainup">
       <Navbar />
@@ -60,6 +64,15 @@ function Favorite() {
           }}
         />
         <button onClick={uploadFile}> Upload Image</button>
+        {imageUrls.map((url, index) => (
+          <img
+            key={index}
+            src={url}
+            className="image"
+            onClick={handleImageClick}
+          />
+        ))}
+        
         {imageUrls.map((url, index) => {
 
           return <img key={index} src={url} />;

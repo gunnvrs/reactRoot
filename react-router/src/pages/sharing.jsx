@@ -48,6 +48,11 @@ function Share() {
       });
   }, []);
 
+  const handleImageClick = (event) => {
+    event.target.classList.toggle("image-selected");
+  };
+
+
   return (
     <div className="mainup">
       <Navbar />
@@ -60,14 +65,21 @@ function Share() {
           }}
         />
         <button onClick={uploadFile}> Upload Image</button>
+        {imageUrls.map((url, index) => (
+          <img
+            key={index}
+            src={url}
+            className="image"
+            onClick={handleImageClick}
+          />
+        ))}
         {imageUrls.map((url, index) => {
+          
 
           return <img key={index} src={url} />;
 
         })}
 
-        {/* <h2>Email: {senddingemail}</h2>
-        <h2>Name: {localStorage.getItem("name")}</h2> */}
 
         <div className="imgauth">
         <a href="/myprofile">
@@ -78,9 +90,7 @@ function Share() {
 
         <title>Itzmine App</title>
 
-        {/* <mainname>ItzMine</mainname>
-        <mainfav>Favorite</mainfav>
-        <mainarch>Share</mainarch> */}
+ 
         <maincover></maincover>
         <mainline></mainline>
       </div>
