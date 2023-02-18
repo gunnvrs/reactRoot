@@ -14,6 +14,7 @@ function Navbar() {
         <Link
           to="/appup"
           style={{
+            fontFamily: '-apple-system',
             textDecoration: "none",
             color: selected === "Itzmine" ? "black" : "grey",
           }}
@@ -27,6 +28,7 @@ function Navbar() {
         <Link
           to="/favorite"
           style={{
+            fontFamily: '-apple-system',
             textDecoration: "none",
             color: selected === "Favorite" ? "black" : "grey",
           }}
@@ -40,6 +42,7 @@ function Navbar() {
         <Link
           to="/sharing"
           style={{
+            fontFamily: '-apple-system',
             textDecoration: "none",
             color: selected === "Share" ? "black" : "grey",
           }}
