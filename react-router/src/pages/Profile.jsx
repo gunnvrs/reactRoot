@@ -53,20 +53,33 @@ function Profile() {
       <Navbar />
       <div className="App">
        
+        
+        {/* <h3>{senddingemail}</h3> */}
+        <h4>{localStorage.getItem("name")}</h4>
+        <h3>{localStorage.getItem("email")}</h3>
+        {/* <h2>Uid: {localStorage.getItem("userId")} </h2> */}
 
-        <h2>Email: {senddingemail}</h2>
-        <h2>Name: {localStorage.getItem("name")}</h2>
-        <h2>Uid: {localStorage.getItem("userId")} </h2>
-
-        <div className="imgauth">
+        <div className="imgauth2">
         <a href="/myprofile">
         <img src={localStorage.getItem("profilePic")} />
         </a>
-        </div>
 
-        <title>Itzmine App</title>
+        <button onClick={() =>{
+        navigate('/login')
+    }}>
+        logout
+    </button>
 
+          <coverlogin2></coverlogin2>
+    
+          <googleemailcover2></googleemailcover2>
+          <googlenamecover2></googlenamecover2>
+          <email2>email</email2>
+      <password2>name</password2>
         
+
+
+        </div>
 
         <maincover></maincover>
         <mainline></mainline>

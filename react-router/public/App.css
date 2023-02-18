@@ -313,6 +313,21 @@ email {
   color: #000000;
 }
 
+email2 {
+  position: absolute;
+  width: 63px;
+  height: 37px;
+  left: 410px;
+  top: 240px;
+
+  font-family: '-apple-system';
+  font-style: italic;
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 37px;
+  color: #000000;
+}
+
 coverlogin {
   position: absolute;
   width: 711.16px;

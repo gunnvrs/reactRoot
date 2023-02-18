@@ -315,6 +315,23 @@ email {
   color: #000000;
 }
 
+
+email2 {
+  position: absolute;
+  width: 63px;
+  height: 37px;
+  left: 410px;
+  top: 240px;
+
+  font-family: '-apple-system';
+  font-style: italic;
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 37px;
+  color: #000000;
+}
+
+
 coverlogin {
   position: absolute;
   width: 711.16px;
@@ -327,6 +344,23 @@ coverlogin {
   box-shadow: 30px 4px 19px rgba(0, 0, 0, 0.25);
   transform: rotate(13.06deg);
 }
+
+
+coverlogin2 {
+  position: absolute;
+  width: 711.16px;
+  height: 1663.34px;
+  left: 1100px;
+  top: -650px;
+
+  /* background: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fphotos%2F1g9LmbRiMt4&psig=AOvVaw0GES6ifp-tJKb9uSngRvBg&ust=1675321236094000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCNDH94rg8_wCFQAAAAAdAAAAABAE), #D9D9D9; */
+  background-image: url(https://images.unsplash.com/photo-1614983646436-b3d7a8398b3f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80);
+  box-shadow: 30px 4px 19px rgba(0, 0, 0, 0.25);
+  // transform: rotate(13.06deg);
+}
+
+
+
 
 forgotpassword {
   position: absolute;
@@ -361,6 +395,22 @@ password {
   height: 37px;
   left: 700px;
   top: 340px;
+
+  font-family: '-apple-system';
+  font-style: italic;
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 37px;
+
+  color: #000000;
+}
+
+password2 {
+  position: absolute;
+  width: 104px;
+  height: 37px;
+  left: 390px;
+  top: 355px;
 
   font-family: '-apple-system';
   font-style: italic;
@@ -423,6 +473,22 @@ font-weight: 300;
 font-size: 30px;
 }
 
+googleemailcover2{
+  /* Rectangle 5 */
+
+position: absolute;
+width: 589px;
+height: 57px;
+left: 410px;
+top: 283px;
+
+background: #F5F5F5;
+border-radius: 19px;
+font-style: italic;
+font-weight: 300;
+font-size: 30px;
+}
+
 
 googlenamecover{
   /* Rectangle 5 */
@@ -432,6 +498,25 @@ width: 589px;
 height: 57px;
 left: 700px;
   top: 380px;
+
+background: #F5F5F5;
+border-radius: 19px;
+
+font-style: italic;
+font-weight: 300;
+font-size: 30px;
+
+
+}
+
+googlenamecover2{
+  /* Rectangle 5 */
+
+position: absolute;
+width: 589px;
+height: 57px;
+left: 410px;
+  top: 395px;
 
 background: #F5F5F5;
 border-radius: 19px;
@@ -465,6 +550,16 @@ font-size: 30px;
 
       
     }
+
+    .imgauth2 img {
+      width: 140px;
+      overflow: hidden;
+        border-radius: 50%;
+      position: absolute;
+      left: 660px;
+      top: 90px;
+        
+      }
 
 img {
   width: 300px;
@@ -812,3 +907,32 @@ color: rgba(118, 118, 118, 0.78);
 //   color: black;
 //   border-bottom-color: black;
 // }
+
+
+h4 {
+  font-size: 40px;
+ 
+  left: 420px;
+  top: 355px;
+  position: absolute;
+  border-radius: 19px;
+
+  font-family: 'Kanit';
+font-style: italic;
+font-weight: 300;
+font-size: 35px;
+z-index: +6;
+}
+
+h3 {
+  left: 420px;
+  top: 255px;
+  position: absolute;
+  border-radius: 19px;
+
+  font-family: 'Kanit';
+font-style: italic;
+font-weight: 300;
+font-size: 35px;
+z-index: +6;
+}
