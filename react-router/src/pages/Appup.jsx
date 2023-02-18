@@ -12,6 +12,25 @@ import { storage } from "../Firebase";
 import { v4 } from "uuid";
 import Navbar from "./Navbar";
 
+function ImageList({ imageUrls }) {
+  const handleImageClick = (event) => {
+    event.target.classList.toggle("image-selected");
+  };
+
+  return (
+    <>
+      {imageUrls.map((url, index) => (
+        <img
+          key={index}
+          src={url}
+          className="image"
+          onClick={handleImageClick}
+        />
+      ))}
+    </>
+  );
+}
+
 function Appup() {
   const [imageUpload, setImageUpload] = useState(null);
   const [imageUrls, setImageUrls] = useState([]);
@@ -48,10 +67,6 @@ function Appup() {
       });
   }, []);
 
-  const handleImageClick = (event) => {
-    event.target.classList.toggle("image-selected");
-  };
-
   return (
     <div className="mainup">
       <Navbar />
@@ -63,14 +78,7 @@ function Appup() {
           }}
         />
         <button onClick={uploadFile}> Upload Image</button>
-        {imageUrls.map((url, index) => (
-          <img
-            key={index}
-            src={url}
-            className="image"
-            onClick={handleImageClick}
-          />
-        ))}
+        <ImageList imageUrls={imageUrls} />
 
         <div className="imgauth">
           <a href="/myprofile">

@@ -73,12 +73,6 @@ function Favorite() {
           />
         ))}
         
-        {imageUrls.map((url, index) => {
-
-          return <img key={index} src={url} />;
-
-        })}
-
         {/* <h2>Email: {senddingemail}</h2>
         <h2>Name: {localStorage.getItem("name")}</h2> */}
         

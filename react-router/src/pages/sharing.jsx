@@ -73,12 +73,12 @@ function Share() {
             onClick={handleImageClick}
           />
         ))}
-        {imageUrls.map((url, index) => {
+        {/* {imageUrls.map((url, index) => {
           
 
           return <img key={index} src={url} />;
 
-        })}
+        })} */}
 
 
         <div className="imgauth">
