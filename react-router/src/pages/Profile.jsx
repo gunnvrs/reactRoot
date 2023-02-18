@@ -13,6 +13,7 @@ import { v4 } from "uuid";
 import Navbar from "./Navbar";
 
 function Profile() {
+  
   const [imageUpload, setImageUpload] = useState(null);
   const [imageUrls, setImageUrls] = useState([]);
 
@@ -49,7 +50,7 @@ function Profile() {
   }, []);
 
   return (
-    <div className="mainup">
+    <div className="mainlogin">
       <Navbar />
       <div className="App">
        
@@ -64,12 +65,10 @@ function Profile() {
         <img src={localStorage.getItem("profilePic")} />
         </a>
 
-        <button onClick={() =>{
-        navigate('/login')
-    }}>
-        logout
-    </button>
-
+        <a href="/login">
+        <button className="button3">logout</button>
+        </a>
+        
           <coverlogin2></coverlogin2>
     
           <googleemailcover2></googleemailcover2>

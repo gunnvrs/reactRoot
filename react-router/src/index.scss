@@ -909,6 +909,8 @@ color: rgba(118, 118, 118, 0.78);
 // }
 
 
+
+
 h4 {
   font-size: 40px;
  
@@ -935,4 +937,19 @@ font-style: italic;
 font-weight: 300;
 font-size: 35px;
 z-index: +6;
+}
+
+button3{
+  top: 400px;
+  position: absolute;
+}
+
+.image {
+  cursor: pointer;
+}
+
+.image-selected {
+  // filter: blur(1px);
+  background-color: red;
+  box-shadow: 50px 14px 29px rgba(207, 11, 11, 0.25);
 }

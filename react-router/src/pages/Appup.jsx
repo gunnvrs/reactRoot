@@ -48,6 +48,10 @@ function Appup() {
       });
   }, []);
 
+  const handleImageClick = (event) => {
+    event.target.classList.toggle("image-selected");
+  };
+
   return (
     <div className="mainup">
       <Navbar />
@@ -59,22 +63,20 @@ function Appup() {
           }}
         />
         <button onClick={uploadFile}> Upload Image</button>
-        {imageUrls.map((url, index) => {
-
-          return <img key={index} src={url} />;
-
-        })}
-
-        {/* <h2>Email: {senddingemail}</h2>
-        <h2>Name: {localStorage.getItem("name")}</h2>
-        <h2>Uid: {localStorage.getItem("userId")} </h2> */}
+        {imageUrls.map((url, index) => (
+          <img
+            key={index}
+            src={url}
+            className="image"
+            onClick={handleImageClick}
+          />
+        ))}
 
         <div className="imgauth">
-        <a href="/myprofile">
-        <img src={localStorage.getItem("profilePic")} />
-        </a>
+          <a href="/myprofile">
+            <img src={localStorage.getItem("profilePic")} />
+          </a>
         </div>
-
 
         <title>Itzmine App</title>
 
