@@ -73,6 +73,7 @@ function App() {
         <Route path='*' element={<Error/>}/>
         <Route path='/sharing' element={<Share/>}/>
         <Route path='/favorite' element={<Favorite/>}/>
+        <Route path='/myprofile' element={<Profile/>}/>
       
     </Routes>
     </BrowserRouter>
