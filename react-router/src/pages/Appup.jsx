@@ -65,13 +65,16 @@ function Appup() {
 
         })}
 
-        <h2>Email: {senddingemail}</h2>
+        {/* <h2>Email: {senddingemail}</h2>
         <h2>Name: {localStorage.getItem("name")}</h2>
-        <h2>Uid: {localStorage.getItem("userId")} </h2>
+        <h2>Uid: {localStorage.getItem("userId")} </h2> */}
 
         <div className="imgauth">
+        <a href="/myprofile">
         <img src={localStorage.getItem("profilePic")} />
+        </a>
         </div>
+
 
         <title>Itzmine App</title>
 
