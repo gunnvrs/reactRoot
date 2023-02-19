@@ -25,6 +25,7 @@ function Login() {
       localStorage.removeItem("name");
       localStorage.removeItem("profilePic");
       localStorage.removeItem("userId");
+      
     });
   };
 
@@ -70,7 +71,7 @@ function Login() {
       <coverlogin></coverlogin>
 
       <button
-          className="login-with-google-btn"
+          className="login-with-google-btn2"
           onClick={handleLogout}
         >signout
         </button>
