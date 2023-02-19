@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithGoogle } from "../Firebase";
+import { auth, signInWithGoogle } from "../Firebase";
 
 function Login() {
   const navigate = useNavigate();
@@ -19,43 +19,62 @@ function Login() {
       });
   };
 
+  const handleLogout = () => {
+    auth.signOut().then(() => {
+      localStorage.removeItem("email");
+      localStorage.removeItem("name");
+      localStorage.removeItem("profilePic");
+      localStorage.removeItem("userId");
+    });
+  };
+
   return (
     <div className="mainlogin">
       <button className="login-with-google-btn" onClick={handleSignInWithGoogle}>
         Sign in with Google
       </button>
-
+      {localStorage.getItem("email") ? (
+        <div>
+          <googleinemail>{localStorage.getItem("email")}</googleinemail>
+          <googleinname>{localStorage.getItem("name")}</googleinname>
+          <div className="imgauth">
+            <img src={localStorage.getItem("profilePic")} />
+          </div>
+          <button className="button">
+            <Link
+              to="/appup"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              login
+            </Link>
+          </button>
+          <button onClick={handleLogout}>Logout</button>
+          <googleemailcover></googleemailcover>
+          <googlenamecover></googlenamecover>
+        </div>
+      ) : (
+        <button
+          className="login-with-google-btn"
+          onClick={handleSignInWithGoogle}
+        >
+          Sign in with Google
+        </button>
+        
+      )}
       <title>login App</title>
       <line1></line1>
       <line2></line2>
       <email>email</email>
       <password>name</password>
       <h2>ItzMine</h2>
-
-      {localStorage.getItem("email") && (
-        <div>
-
-          <googleinemail>{localStorage.getItem("email")}</googleinemail>
-          <googleinname>{localStorage.getItem("name")}</googleinname>
-
-          <div className="imgauth">
-            <img src={localStorage.getItem("profilePic")} />
-          </div>
-          <button className="button">
-          <Link to="/appup" style={{ textDecoration: "none", color: "black"  }}>
-        login
-        </Link>
-          </button>
-
-          <googleemailcover></googleemailcover>
-          <googlenamecover></googlenamecover>
-
-          
-          
-        </div>
-        
-      )}
       <coverlogin></coverlogin>
+
+      <button
+          className="login-with-google-btn"
+          onClick={handleLogout}
+        >signout
+        </button>
+
     </div>
   );
 }
