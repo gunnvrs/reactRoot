@@ -56,7 +56,7 @@ function Favorite() {
     <div className="mainup">
       <Navbar />
       <div className="App">
-      <sharemainname>F</sharemainname>
+      {/* <sharemainname>F</sharemainname> */}
         <input
           type="file"
           onChange={(event) => {

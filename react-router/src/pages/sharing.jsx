@@ -57,7 +57,7 @@ function Share() {
     <div className="mainup">
       <Navbar />
       <div className="App">
-        <sharemainname>Share</sharemainname>
+        {/* <sharemainname>Share</sharemainname> */}
         <input
           type="file"
           onChange={(event) => {
