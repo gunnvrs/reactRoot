@@ -13,6 +13,7 @@ function Login() {
         localStorage.setItem("name", user.displayName);
         localStorage.setItem("profilePic", user.photoURL);
         localStorage.setItem("userId", user.uid);
+        // navigate("/appup"); // redirect to the appup page
       })
       .catch((error) => {
         console.log(error);
@@ -46,7 +47,7 @@ function Login() {
               to="/appup"
               style={{ textDecoration: "none", color: "black" }}
             >
-              login
+              go to app
             </Link>
           </button>
           <button onClick={handleLogout}>Logout</button>
