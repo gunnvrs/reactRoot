@@ -77,22 +77,21 @@ function Favorite() {
     if (selectedImage == null) {
       return;
     }
-
+  
     const imageName = imageUrls.find((obj) => obj.url === selectedImage).name;
     const imageNameWithoutParams = imageName.replace(/(\?.*)|(\/media)/g, '');
-    // const imageRef = ref(storage, `${localStorage.getItem("name")}fav/${imageNameWithoutParams}`);
     const imageRef = ref(storage, `${imageNameWithoutParams}`);
-
-
+  
     deleteObject(imageRef)
       .then(() => {
-        setImageUrls((prev) => prev.filter((obj) => obj.url !== selectedImage));
         setSelectedImage(null);
+        setImageUrls(prevUrls => prevUrls.filter(url => url !== selectedImage));
       })
       .catch((error) => {
         console.log(error);
       });
   };
+    
   
   
   return (
