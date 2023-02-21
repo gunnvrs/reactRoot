@@ -79,8 +79,9 @@ function Favorite() {
     }
 
     const imageName = imageUrls.find((obj) => obj.url === selectedImage).name;
-const imageNameWithoutParams = imageName.replace(/(\?.*)|(\/media)/g, '');
-const imageRef = ref(storage, `${localStorage.getItem("name")}fav/${imageNameWithoutParams}`);
+    const imageNameWithoutParams = imageName.replace(/(\?.*)|(\/media)/g, '');
+    // const imageRef = ref(storage, `${localStorage.getItem("name")}fav/${imageNameWithoutParams}`);
+    const imageRef = ref(storage, `${imageNameWithoutParams}`);
 
 
     deleteObject(imageRef)
