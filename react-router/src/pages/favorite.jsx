@@ -7,6 +7,7 @@ import {
   getDownloadURL,
   listAll,
   list,
+  deleteObject,
 } from "firebase/storage";
 import { storage } from "../Firebase";
 import { v4 } from "uuid";
@@ -15,14 +16,22 @@ import Navbar from "./Navbar";
 function Favorite() {
   const [imageUpload, setImageUpload] = useState(null);
   const [imageUrls, setImageUrls] = useState([]);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const { senddingemail } = useParams();
 
-  const imagesListRef = ref(storage, `${localStorage.getItem("name")+"fav"}/`);
+  const imagesListRef = ref(storage, `${localStorage.getItem("name")}fav/`);
+
   const uploadFile = () => {
     if (imageUpload == null) return;
 
-    const imageRef = ref(storage, `${localStorage.getItem("name")+"fav"}/${imageUpload.name + v4()}`);
+    const imageRef = ref(
+      storage,
+      `${localStorage.getItem("name")}fav/${imageUpload.name}`
+      
+    );
+    console.log('imageRef', imageRef);
+
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
         if (!imageUrls.includes(url)) {
@@ -50,13 +59,45 @@ function Favorite() {
 
   const handleImageClick = (event) => {
     event.target.classList.toggle("image-selected");
+    const url = event.target.src;
+    const name = decodeURIComponent(url.substring(url.lastIndexOf('/') + 1));
+    if (selectedImage !== url) {
+      setSelectedImage(url);
+    } else {
+      setSelectedImage(null);
+    }
+    if (!imageUrls.some((obj) => obj.url === url)) {
+      setImageUrls((prev) => [...prev, { name, url }]);
+    }
   };
+  
+  
+  
+  const handleDeleteClick = () => {
+    if (selectedImage == null) {
+      return;
+    }
 
+    const imageName = imageUrls.find((obj) => obj.url === selectedImage).name;
+const imageNameWithoutParams = imageName.replace(/(\?.*)|(\/media)/g, '');
+const imageRef = ref(storage, `${localStorage.getItem("name")}fav/${imageNameWithoutParams}`);
+
+
+    deleteObject(imageRef)
+      .then(() => {
+        setImageUrls((prev) => prev.filter((obj) => obj.url !== selectedImage));
+        setSelectedImage(null);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
+  
   return (
     <div className="mainup">
       <Navbar />
       <div className="App">
-      {/* <sharemainname>F</sharemainname> */}
         <input
           type="file"
           onChange={(event) => {
@@ -65,22 +106,29 @@ function Favorite() {
         />
         <button onClick={uploadFile}> Upload Image</button>
         {imageUrls.map((url, index) => (
-          <img
-            key={index}
-            src={url}
-            className="image"
-            onClick={handleImageClick}
-          />
+          <div key={index} className="image-container">
+            <img
+              src={url}
+              className={`image ${selectedImage === url ? "image-selected" : ""}`}
+              onClick={handleImageClick}
+            />
+            {selectedImage === url && (
+              <button className="delete-button" onClick={handleDeleteClick}>
+                Delete
+              </button>
+            )}
+          </div>
         ))}
-        
-        {/* <h2>Email: {senddingemail}</h2>
-        <h2>Name: {localStorage.getItem("name")}</h2> */}
         
         <div className="imgauth">
         <a href="/myprofile">
         <img src={localStorage.getItem("profilePic")} />
         </a>
         </div>
+
+
+       
+
 
 
         <title>Itzmine App</title>
