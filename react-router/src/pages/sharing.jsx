@@ -1,14 +1,9 @@
 import { useState, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { signInWithGoogle } from "../Firebase";
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  listAll,
-  list,
-} from "firebase/storage";
-import { storage } from "../Firebase";
+import { collection, addDoc, getDocs } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { db } from "../Firebase";
 import { v4 } from "uuid";
 import Navbar from "./Navbar";
 
@@ -18,26 +13,32 @@ function Share() {
 
   const { senddingemail } = useParams();
 
-  const imagesListRef = ref(storage, `images/`);
+  const imagesCollectionRef = collection(db, "images");
+  const storage = getStorage();
+
   const uploadFile = () => {
     if (imageUpload == null) return;
 
-    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-    uploadBytes(imageRef, imageUpload).then((snapshot) => {
-      getDownloadURL(snapshot.ref).then((url) => {
-        if (!imageUrls.includes(url)) {
-          setImageUrls((prev) => [...prev, url]);
-        }
+    const fileName = imageUpload.name + v4();
+    addDoc(imagesCollectionRef, { name: fileName }).then(() => {
+      const storageRef = ref(storage, `images/${fileName}`);
+      uploadBytes(storageRef, imageUpload).then(() => {
+        getDownloadURL(storageRef).then((url) => {
+          if (!imageUrls.includes(url)) {
+            setImageUrls((prev) => [...prev, url]);
+          }
+        });
       });
     });
   };
 
   useEffect(() => {
-    listAll(imagesListRef)
-      .then((response) => {
-        const promises = response.items.map((item) =>
-          getDownloadURL(item).then((url) => url)
-        );
+    getDocs(imagesCollectionRef)
+      .then((querySnapshot) => {
+        const promises = querySnapshot.docs.map((doc) => {
+          const storageRef = ref(storage, `images/${doc.data().name}`);
+          return getDownloadURL(storageRef);
+        });
 
         Promise.all(promises).then((urls) => {
           setImageUrls(urls);
