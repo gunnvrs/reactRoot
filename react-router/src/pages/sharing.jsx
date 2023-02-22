@@ -9,7 +9,7 @@ import Navbar from "./Navbar";
 
 function Share() {
   const [imageUpload, setImageUpload] = useState(null);
-  const [imageUrls, setImageUrls] = useState([]);
+  const [imageData, setImageData] = useState([]);
   const [uploadedBy, setUploadedBy] = useState(null);
 
   const { senddingemail } = useParams();
@@ -30,9 +30,7 @@ function Share() {
       const storageRef = ref(storage, `images/${fileName}`);
       uploadBytes(storageRef, imageUpload).then(() => {
         getDownloadURL(storageRef).then((url) => {
-          if (!imageUrls.includes(url)) {
-            setImageUrls((prev) => [...prev, url]);
-          }
+          setImageData((prevData) => [...prevData, {url, uploadedBy: currentUser.displayName}]);
         });
       });
     });
@@ -43,11 +41,13 @@ function Share() {
       .then((querySnapshot) => {
         const promises = querySnapshot.docs.map((doc) => {
           const storageRef = ref(storage, `images/${doc.data().name}`);
-          return getDownloadURL(storageRef);
+          return getDownloadURL(storageRef).then((url) => {
+            return {url, uploadedBy: doc.data().uploadedBy}
+          });
         });
 
-        Promise.all(promises).then((urls) => {
-          setImageUrls(urls);
+        Promise.all(promises).then((data) => {
+          setImageData(data);
         });
       })
       .catch((error) => {
@@ -64,7 +64,6 @@ function Share() {
     <div className="mainup">
       <Navbar />
       <div className="App">
-        {/* <sharemainname>Share</sharemainname> */}
         <input
           type="file"
           onChange={(event) => {
@@ -72,30 +71,18 @@ function Share() {
           }}
         />
         <button onClick={uploadFile}> Upload Image</button>
-        {imageUrls.map((url, index) => (
+        {imageData.map((data, index) => (
           <div key={index}>
-            <img src={url} className="image" onClick={handleImageClick} />
-            <p>Added by: {uploadedBy}</p>
+            <img src={data.url} className="image" onClick={handleImageClick} />
+            <p>Added by: {data.uploadedBy}</p>
           </div>
         ))}
-        {/* {imageUrls.map((url, index) => {
-          
-
-          return <img key={index} src={url} />;
-
-        })} */}
-
-
         <div className="imgauth">
-        <a href="/myprofile">
-        <img src={localStorage.getItem("profilePic")} />
-        </a>
+          <a href="/myprofile">
+            <img src={localStorage.getItem("profilePic")} />
+          </a>
         </div>
-
-
         <title>Itzmine App</title>
-
- 
         <maincover></maincover>
         <mainline></mainline>
       </div>
