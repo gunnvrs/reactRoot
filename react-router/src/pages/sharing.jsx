@@ -3,13 +3,14 @@ import { useLocation, useParams } from "react-router-dom";
 import { signInWithGoogle } from "../Firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { db } from "../Firebase";
+import { db, auth } from "../Firebase";
 import { v4 } from "uuid";
 import Navbar from "./Navbar";
 
 function Share() {
   const [imageUpload, setImageUpload] = useState(null);
   const [imageUrls, setImageUrls] = useState([]);
+  const [uploadedBy, setUploadedBy] = useState(null);
 
   const { senddingemail } = useParams();
 
@@ -20,7 +21,12 @@ function Share() {
     if (imageUpload == null) return;
 
     const fileName = imageUpload.name + v4();
-    addDoc(imagesCollectionRef, { name: fileName }).then(() => {
+    const currentUser = auth.currentUser;
+
+    addDoc(imagesCollectionRef, {
+      name: fileName,
+      uploadedBy: currentUser.displayName
+    }).then(() => {
       const storageRef = ref(storage, `images/${fileName}`);
       uploadBytes(storageRef, imageUpload).then(() => {
         getDownloadURL(storageRef).then((url) => {
@@ -67,12 +73,10 @@ function Share() {
         />
         <button onClick={uploadFile}> Upload Image</button>
         {imageUrls.map((url, index) => (
-          <img
-            key={index}
-            src={url}
-            className="image"
-            onClick={handleImageClick}
-          />
+          <div key={index}>
+            <img src={url} className="image" onClick={handleImageClick} />
+            <p>Added by: {uploadedBy}</p>
+          </div>
         ))}
         {/* {imageUrls.map((url, index) => {
           
