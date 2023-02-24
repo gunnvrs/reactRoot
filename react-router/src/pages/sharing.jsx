@@ -77,7 +77,7 @@ function Share() {
         {imageData.map((data, index) => (
           <div key={index}>
             <img src={data.url} className="image" onClick={handleImageClick} />
-            {data.createdAt && <p>Added by: {data.uploadedBy} at {data.createdAt.toLocaleString()}</p>}
+            {data.createdAt && <h5>Added by: {data.uploadedBy} at {data.createdAt.toLocaleString()}</h5>}
 
           </div>
         ))}
