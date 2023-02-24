@@ -12,6 +12,7 @@ function Share() {
   const [imageUpload, setImageUpload] = useState(null);
   const [imageData, setImageData] = useState([]);
   const [uploadedBy, setUploadedBy] = useState(null);
+  const [imageRows, setImageRows] = useState([]);
 
   const { senddingemail } = useParams();
 
@@ -50,12 +51,42 @@ function Share() {
             const isPinned = doc.data().isPinned || false;
             const id = doc.id; // Add id property
             return { id, url, uploadedBy, createdAt, isPinned };
-          });
-          
+          });  
         });
-    
+  
         Promise.all(promises).then((data) => {
-          setImageData(data);
+          // Sort the images by pinned state and creation date
+          const sortedData = data.sort((a, b) => {
+            // Sort by pinned state first
+            if (a.isPinned !== b.isPinned) {
+              return b.isPinned - a.isPinned;
+            }
+            // Then sort by creation date
+            return b.createdAt - a.createdAt;
+          });
+          setImageData(sortedData);
+  
+          
+         // Calculate the number of rows needed to display the images
+const numRows = Math.ceil(sortedData.length / 3);
+
+// Create an array of empty arrays, one for each row
+const rows = Array.from({ length: numRows }, () => []);
+
+// Insert the images into the rows in left-to-right, top-to-bottom order
+sortedData.forEach((image, index) => {
+  const row = Math.floor(index / 3);
+  const col = index % 3;
+  rows[row][col] = image;
+});
+
+// Remove any empty rows at the end of the array
+while (rows.length > 0 && rows[rows.length - 1].every((image) => image === null)) {
+  rows.pop();
+}
+
+setImageRows(rows);
+
         });
       })
       .catch((error) => {
@@ -63,6 +94,7 @@ function Share() {
       });
   }, []);
   
+
   
 
   const handleImageClick = (event, index) => {
