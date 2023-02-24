@@ -105,13 +105,18 @@ function Share() {
         />
         <button onClick={uploadFile}> Upload Image</button>
         {imageData.map((data, index) => (
-          <div key={index}>
-            <img src={data.url} className="image" onClick={(event) => handleImageClick(event, index)} />
+  <div key={index}>
+    <img 
+      src={data.url} 
+      className={`image ${data.isPinned ? "image-selected" : ""}`} 
+      onClick={(event) => handleImageClick(event, index)} 
+    />
 
-            {data.createdAt && <h5>Added by: {data.uploadedBy} at {data.createdAt.toLocaleString()}</h5>}
+    {data.createdAt && <h5>Added by: {data.uploadedBy} at {data.createdAt.toLocaleString()}</h5>}
 
-          </div>
-        ))}
+  </div>
+))}
+
         <div className="imgauth">
           <a href="/myprofile">
             <img src={localStorage.getItem("profilePic")} />
