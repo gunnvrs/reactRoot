@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { signInWithGoogle } from "../Firebase";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, serverTimestamp } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, auth } from "../Firebase";
 import { v4 } from "uuid";
@@ -25,27 +25,30 @@ function Share() {
 
     addDoc(imagesCollectionRef, {
       name: fileName,
-      uploadedBy: currentUser.displayName
+      uploadedBy: currentUser.displayName,
+      createdAt: serverTimestamp() // Add current time
     }).then(() => {
       const storageRef = ref(storage, `images/${fileName}`);
       uploadBytes(storageRef, imageUpload).then(() => {
         getDownloadURL(storageRef).then((url) => {
-          setImageData((prevData) => [...prevData, {url, uploadedBy: currentUser.displayName}]);
+          setImageData((prevData) => [...prevData, {url, uploadedBy: currentUser.displayName, createdAt: new Date()}]); // Update state with createdAt field
         });
       });
     });
   };
 
   useEffect(() => {
-    getDocs(imagesCollectionRef)
+    getDocs(imagesCollectionRef, { orderBy: "createdAt" })
       .then((querySnapshot) => {
         const promises = querySnapshot.docs.map((doc) => {
           const storageRef = ref(storage, `images/${doc.data().name}`);
           return getDownloadURL(storageRef).then((url) => {
-            return {url, uploadedBy: doc.data().uploadedBy}
+            const uploadedBy = doc.data().uploadedBy;
+            const createdAt = doc.data().createdAt ? doc.data().createdAt.toDate() : null; // Check if createdAt field exists
+            return { url, uploadedBy, createdAt };
           });
         });
-
+  
         Promise.all(promises).then((data) => {
           setImageData(data);
         });
@@ -74,7 +77,8 @@ function Share() {
         {imageData.map((data, index) => (
           <div key={index}>
             <img src={data.url} className="image" onClick={handleImageClick} />
-            <p>Added by: {data.uploadedBy}</p>
+            {data.createdAt && <p>Added by: {data.uploadedBy} at {data.createdAt.toLocaleString()}</p>}
+
           </div>
         ))}
         <div className="imgauth">
@@ -82,6 +86,7 @@ function Share() {
             <img src={localStorage.getItem("profilePic")} />
           </a>
         </div>
+
         <title>Itzmine App</title>
         <maincover></maincover>
         <mainline></mainline>
