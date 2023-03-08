@@ -16,6 +16,7 @@ import Appup from './pages/Appup'
 import NotFoundPage from './pages/Error'
 import Share from './pages/sharing'
 import Favorite from './pages/favorite'
+import Album from './pages/Album'
 
 
 
