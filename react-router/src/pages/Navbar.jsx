@@ -51,6 +51,20 @@ function Navbar() {
           Share
         </Link>
       </mainarch>
+
+      <mainalbum>
+      <Link
+          to="/album"
+          style={{
+            fontFamily: '-apple-system',
+            textDecoration: "none",
+            color: selected === "Album" ? "black" : "grey",
+          }}
+          onClick={handleClick}
+        >
+          Album
+        </Link>
+      </mainalbum>
     </nav>
   );
 }
