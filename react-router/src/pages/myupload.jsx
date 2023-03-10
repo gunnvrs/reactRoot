@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { signInWithGoogle } from "../Firebase";
-import { collection, addDoc, getDocs, serverTimestamp, updateDoc, doc, query, where } from "firebase/firestore";
+import { collection, addDoc, getDocs, serverTimestamp, updateDoc, doc, query, where, deleteDoc } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { db, auth } from "../Firebase";
 import { v4 } from "uuid";
@@ -71,28 +71,28 @@ function Myupload() {
             return b.createdAt - a.createdAt;
           });
           setImageData(sortedData);
-
+        
           // Calculate the number of rows needed to display the images
           const numRows = Math.ceil(sortedData.length / 3);
-
+        
           // Create an array of empty arrays, one for each row
           const rows = Array.from({ length: numRows }, () => []);
-
-// Insert the images into the rows in left-to-right, top-to-bottom order
-sortedData.forEach((image, index) => {
-  const row = Math.floor(index / 3);
-  const col = index % 3;
-  rows[row][col] = image;
-});
-
-// Remove any empty rows at the end of the array
-while (rows.length > 0 && rows[rows.length - 1].every((image) => image === null)) {
-  rows.pop();
-}
-
-setImageRows(rows);
-
+        
+          // Insert the images into the rows in left-to-right, top-to-bottom order
+          sortedData.forEach((image, index) => {
+            const row = Math.floor(index / 3);
+            const col = index % 3;
+            rows[row][col] = image;
+          });
+        
+          // Remove any empty rows at the end of the array
+          while (rows.length > 0 && rows[rows.length - 1].every((image) => image === null)) {
+            rows.pop();
+          }
+        
+          setImageRows(rows);
         });
+        
       })
       .catch((error) => {
         console.log(error);
@@ -123,13 +123,26 @@ setImageRows(rows);
     }
   };
   
-  
-  
-  
-  
-  
 
-
+  const handleDeleteClick = (id) => {
+    // Remove the image from the local state
+    const imageDataCopy = imageData.filter((image) => image.id !== id);
+    setImageData(imageDataCopy);
+  
+    // Remove the image from Firebase
+    const imagesCollectionRef = collection(db, "images");
+    const imageDocRef = doc(imagesCollectionRef, id);
+    deleteDoc(imageDocRef)
+      .then(() => {
+        console.log("Image deleted from Firebase");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
+  
+  
   return (
     <div className="mainup">
       <Navbar />
@@ -143,11 +156,9 @@ setImageRows(rows);
         <button onClick={uploadFile}> Upload Image</button>
         {imageData.map((data, index) => (
   <div key={index}>
-    <img 
-      src={data.url} 
-      className={`image ${data.isPinned ? "image-selected" : ""}`} 
-      onClick={(event) => handleImageClick(event, index)} 
-    />
+    <img src={data.url} className={`image ${data.isPinned ? "image-selected" : ""}`} onClick={(event) => handleImageClick(event, index)} />
+    <button onClick={() => handleDeleteClick(data.id)}>Delete</button>
+
 
     {data.createdAt && <h5>Added by: {data.uploadedBy} at {data.createdAt.toLocaleString()}</h5>}
 

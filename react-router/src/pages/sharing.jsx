@@ -129,13 +129,14 @@ setImageRows(rows);
     <div className="mainup">
       <Navbar />
       <div className="App">
-        <input
+        {/* <input
           type="file"
           onChange={(event) => {
             setImageUpload(event.target.files[0]);
           }}
-        />
-        <button onClick={uploadFile}> Upload Image</button>
+        /> */}
+        {/* <button onClick={uploadFile}> Upload Image</button> */}
+        <p2>Share</p2>
         {imageData.map((data, index) => (
   <div key={index}>
     <img 
