@@ -5,18 +5,18 @@ import { BrowserRouter , NavLink , Routes , Route , Navigate} from 'react-router
 
 
 // Pages
-import Home from './pages/Home'
-import About from './pages/Album'
-import Contact from './pages/Contact'
+// import Home from './pages/Home'
+// import About from './pages/Album'
+// import Contact from './pages/Contact'
 import Error from './pages/Error'
-import Dashboard from './pages/Dashboard'
+// import Dashboard from './pages/Dashboard'
 import Profile from './pages/Profile'
 import Login from './pages/Login'
 import Appup from './pages/Appup'
-import NotFoundPage from './pages/Error'
+// import NotFoundPage from './pages/Error'
 import Share from './pages/sharing'
 import Favorite from './pages/favorite'
-import Album from './pages/Album'
+import Myupload from './pages/Myupload'
 
 
 
@@ -75,7 +75,7 @@ function App() {
         <Route path='/sharing' element={<Share/>}/>
         <Route path='/favorite' element={<Favorite/>}/>
         <Route path='/myprofile' element={<Profile/>}/>
-        <Route path='/album' element={<Album/>}/>
+        <Route path='/myupload' element={<Myupload/>}/>
       
     </Routes>
     </BrowserRouter>

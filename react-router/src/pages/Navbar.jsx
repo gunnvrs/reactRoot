@@ -54,7 +54,7 @@ function Navbar() {
 
       <mainalbum>
       <Link
-          to="/album"
+          to="/myupload"
           style={{
             fontFamily: '-apple-system',
             textDecoration: "none",
@@ -62,7 +62,7 @@ function Navbar() {
           }}
           onClick={handleClick}
         >
-          Album
+          myShare
         </Link>
       </mainalbum>
     </nav>
