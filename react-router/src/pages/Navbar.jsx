@@ -58,11 +58,11 @@ function Navbar() {
           style={{
             fontFamily: '-apple-system',
             textDecoration: "none",
-            color: selected === "Album" ? "black" : "grey",
+            color: selected === "MyShare" ? "black" : "grey",
           }}
           onClick={handleClick}
         >
-          myShare
+          MyShare
         </Link>
       </mainalbum>
     </nav>
