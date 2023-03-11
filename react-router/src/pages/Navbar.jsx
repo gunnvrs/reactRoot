@@ -30,11 +30,11 @@ function Navbar() {
           style={{
             fontFamily: '-apple-system',
             textDecoration: "none",
-            color: selected === "Favorite" ? "black" : "grey",
+            color: selected === "Main" ? "black" : "grey",
           }}
           onClick={handleClick}
         >
-          Favorite
+          Main
         </Link>
       </mainfav>
 
