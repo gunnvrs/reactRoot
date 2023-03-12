@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { serverTimestamp, doc, updateDoc, addDoc, collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "../Firebase";
+import { db, auth } from "../Firebase";
 import Navbar from "./Navbar";
 
 const Linkurl = () => {
@@ -22,22 +22,26 @@ const Linkurl = () => {
   };
 
   const handleSaveUrl = () => {
-    if (username) {
-      const urlsRef = collection(db, "users", username, "urls");
-      console.log("urlsRef:", urlsRef);
+    if (auth.currentUser) {
+      if (username) {
+        const urlsRef = collection(db, "users", username, "urls");
+        console.log("urlsRef:", urlsRef);
 
-      addDoc(urlsRef, {
-        url: url,
-        timestamp: serverTimestamp()
-      })
-      .then(() => {
-        console.log("URL saved to Firestore.");
-      })
-      .catch((error) => {
-        console.error("Error saving URL: ", error);
-      });
+        addDoc(urlsRef, {
+          url: url,
+          timestamp: serverTimestamp()
+        })
+        .then(() => {
+          console.log("URL saved to Firestore.");
+        })
+        .catch((error) => {
+          console.error("Error saving URL: ", error);
+        });
+      } else {
+        console.log("User not logged in.");
+      }
     } else {
-      console.log("User not logged in.");
+      console.log("User not authenticated.");
     }
   };
 
