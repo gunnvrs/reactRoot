@@ -57,6 +57,7 @@ function Profile() {
         
         {/* <h3>{senddingemail}</h3> */}
         <h4>{localStorage.getItem("name")}</h4>
+        <h4>{localStorage.getItem("userId")}</h4>
         <h3>{localStorage.getItem("email")}</h3>
         {/* <h2>Uid: {localStorage.getItem("userId")} </h2> */}
 

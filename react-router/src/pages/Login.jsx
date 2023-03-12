@@ -8,11 +8,12 @@ function Login() {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-        const userId = result.uid;
+        const userId = user.uid; // get the UID from the user object
         localStorage.setItem("email", user.email);
         localStorage.setItem("name", user.displayName);
         localStorage.setItem("profilePic", user.photoURL);
-        localStorage.setItem("userId", user.uid);
+        localStorage.setItem("userId", userId); // store the UID in localStorage
+        navigate("/");
         // navigate("/appup"); // redirect to the appup page
       })
       .catch((error) => {
@@ -26,7 +27,7 @@ function Login() {
       localStorage.removeItem("name");
       localStorage.removeItem("profilePic");
       localStorage.removeItem("userId");
-      
+      navigate("/");
     });
   };
 

@@ -723,6 +723,20 @@ line-height: 45px;
 color: rgba(118, 118, 118, 0.78);
 }
 
+mainlink {
+  position: fixed;
+width: 100px;
+height: 45px;
+left: 81px;
+top: 375px;
+
+font-family: 'Kanit';
+font-style: italic;
+font-weight: 300;
+font-size: 30px;
+line-height: 45px;
+}
+
 mainline {
   /* Line 1 */
 position: fixed;

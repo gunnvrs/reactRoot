@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import "./index.scss"
-import { BrowserRouter , NavLink , Routes , Route , Navigate} from 'react-router-dom'
+import { BrowserRouter , NavLink , Routes , Route , Navigate, Link} from 'react-router-dom'
 
 
 // Pages
@@ -17,6 +17,7 @@ import Appup from './pages/Appup'
 import Share from './pages/sharing'
 import Favorite from './pages/favorite'
 import Myupload from './pages/Myupload'
+import Linkurl from './pages/Link'
 
 
 
@@ -76,6 +77,7 @@ function App() {
         <Route path='/favorite' element={<Favorite/>}/>
         <Route path='/myprofile' element={<Profile/>}/>
         <Route path='/myupload' element={<Myupload/>}/>
+        <Route path='/link' element={<Linkurl/>}/>
       
     </Routes>
     </BrowserRouter>

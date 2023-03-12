@@ -4,6 +4,8 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { Navigate, useNavigate } from "react-router-dom";
 
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyAHBBx5buvkempJoiAXQZBGwVAAOYZH3cw",
   authDomain: "itzwebapp.firebaseapp.com",
@@ -32,6 +34,7 @@ export const signInWithGoogle = () => {
     .then((result) => {
       const name = result.user.displayName;
       const email = result.user.email;
+      const uid = result.user.userId;
       const profilePic = result.user.photoURL;
     
       localStorage.setItem("name", name);
