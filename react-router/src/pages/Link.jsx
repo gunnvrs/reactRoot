@@ -1,17 +1,28 @@
 import { useState, useEffect } from "react";
-import { serverTimestamp, doc, updateDoc, addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import {
+  serverTimestamp,
+  doc,
+  updateDoc,
+  addDoc,
+  collection,
+  getDocs,
+  query,
+  where
+} from "firebase/firestore";
 import { db, auth } from "../Firebase";
 import Navbar from "./Navbar";
 
 const Linkurl = () => {
   const [url, setUrl] = useState("");
   const [username, setUsername] = useState("");
+  const [urls, setUrls] = useState([]);
 
   useEffect(() => {
     const name = localStorage.getItem("name");
     console.log("name:", name);
     if (name) {
       setUsername(name);
+      getUrls(name);
     } else {
       console.log("User not logged in.");
     }
@@ -24,15 +35,21 @@ const Linkurl = () => {
   const handleSaveUrl = () => {
     if (auth.currentUser) {
       if (username) {
+        if (url.trim() === '') {
+          console.log("URL cannot be empty.");
+          return;
+        }
         const urlsRef = collection(db, "users", username, "urls");
         console.log("urlsRef:", urlsRef);
-
+  
         addDoc(urlsRef, {
           url: url,
           timestamp: serverTimestamp()
         })
         .then(() => {
           console.log("URL saved to Firestore.");
+          setUrl("");
+          getUrls(username);
         })
         .catch((error) => {
           console.error("Error saving URL: ", error);
@@ -43,6 +60,15 @@ const Linkurl = () => {
     } else {
       console.log("User not authenticated.");
     }
+  };
+  
+  const getUrls = async (username) => {
+    const q = query(collection(db, "users", username, "urls"));
+    const querySnapshot = await getDocs(q);
+    const urls = querySnapshot.docs.map((doc) => {
+      return { id: doc.id, ...doc.data() };
+    });
+    setUrls(urls);
   };
 
   console.log("url:", url);
@@ -58,9 +84,25 @@ const Linkurl = () => {
           </a>
         </div>
         <p2>Link Page</p2>
-        <h4>{localStorage.getItem("name")}</h4>
         <input type="text" value={url} onChange={handleUrlChange} />
         <button onClick={handleSaveUrl}>Save</button>
+        <table>
+  <thead>
+    <tr>
+      <th>URL</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    {urls.map((url) => (
+      <tr key={url.id}>
+        <td style={{ padding: "10px 20px" }}>{url.url}</td>
+        <td style={{ padding: "10px 20px" }}>{url.timestamp && url.timestamp.toDate().toString()}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
         <title>Itzmine App</title>
       </div>
       <maincover></maincover>
