@@ -42,7 +42,7 @@ const Linkurl = () => {
         }
         const urlsRef = collection(db, "users", username, "urls");
         console.log("urlsRef:", urlsRef);
-  
+
         addDoc(urlsRef, {
           url: url,
           timestamp: serverTimestamp()
@@ -66,7 +66,7 @@ const Linkurl = () => {
   const handleDeleteUrl = async (id, url) => {
     const urlsRef = collection(db, "users", username, "urls");
     const docRef = doc(urlsRef, id);
-  
+
     await updateDoc(docRef, {
       deleted: true
     })
@@ -77,13 +77,17 @@ const Linkurl = () => {
     .catch((error) => {
       console.error("Error deleting URL: ", error);
     });
-  
+
     // Open the URL in a new tab in the browser
-    window.open(url, "_blank");
+    handleOpenUrl(url);
+  };
+
+  const handleOpenUrl = (url) => {
+    const newWindow = window.open(`https://${url}`, '_blank', 'noopener,noreferrer');
+    if (newWindow) newWindow.opener = null;
   };
   
-  
-  
+
   const getUrls = async (username) => {
     const q = query(collection(db, "users", username, "urls"));
     const querySnapshot = await getDocs(q);
@@ -124,7 +128,8 @@ const Linkurl = () => {
       <td>
         <div>
           <button onClick={() => handleDeleteUrl(url.id, url.url)}>Delete</button>
-          <button onClick={() => window.open(url.url, "_blank")}>Open</button>
+          <button onClick={() => handleOpenUrl(url.url)}>Open</button>
+
         </div>
       </td>
     </tr>
