@@ -63,11 +63,11 @@ const Linkurl = () => {
     }
   };
 
-  const handleDeleteUrl = (id) => {
+  const handleDeleteUrl = async (id, url) => {
     const urlsRef = collection(db, "users", username, "urls");
     const docRef = doc(urlsRef, id);
-    
-    updateDoc(docRef, {
+  
+    await updateDoc(docRef, {
       deleted: true
     })
     .then(() => {
@@ -77,7 +77,11 @@ const Linkurl = () => {
     .catch((error) => {
       console.error("Error deleting URL: ", error);
     });
+  
+    // Open the URL in a new tab in the browser
+    window.open(url, "_blank");
   };
+  
   
   
   const getUrls = async (username) => {
@@ -113,16 +117,20 @@ const Linkurl = () => {
             </tr>
           </thead>
           <tbody>
-    {urls.filter((url) => !url.deleted).map((url) => (
-      <tr key={url.id}>
-        <td style={{ padding: "10px 20px" }}>{url.url}</td>
-        <td style={{ padding: "10px 20px" }}>{url.timestamp && url.timestamp.toDate().toString()}</td>
-        <td>
-          <button onClick={() => handleDeleteUrl(url.id)}>Delete</button>
-        </td>
-      </tr>
-    ))}
-  </tbody>
+  {urls.filter((url) => !url.deleted).map((url) => (
+    <tr key={url.id}>
+      <td style={{ padding: "10px 20px" }}>{url.url}</td>
+      <td style={{ padding: "10px 20px" }}>{url.timestamp && url.timestamp.toDate().toString()}</td>
+      <td>
+        <div>
+          <button onClick={() => handleDeleteUrl(url.id, url.url)}>Delete</button>
+          <button onClick={() => window.open(url.url, "_blank")}>Open</button>
+        </div>
+      </td>
+    </tr>
+  ))}
+</tbody>
+
         </table>
   
         <title>Itzmine App</title>
