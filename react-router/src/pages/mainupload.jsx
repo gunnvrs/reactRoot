@@ -24,14 +24,12 @@ function Favorite() {
 
   const uploadFile = () => {
     if (imageUpload == null) return;
-
+  
     const imageRef = ref(
       storage,
       `${localStorage.getItem("name")}fav/${imageUpload.name}`
-      
     );
-    console.log('imageRef', imageRef);
-
+  
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
         if (!imageUrls.includes(url)) {
@@ -39,7 +37,10 @@ function Favorite() {
         }
       });
     });
+  
+    setImageUpload(null);
   };
+  
 
   useEffect(() => {
     listAll(imagesListRef)
