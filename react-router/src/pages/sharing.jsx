@@ -136,7 +136,7 @@ setImageRows(rows);
           }}
         /> */}
         {/* <button onClick={uploadFile}> Upload Image</button> */}
-        <p2>Share</p2>
+        <p2>Shared Gallery</p2>
         {imageData.map((data, index) => (
   <div key={index}>
     <img 
